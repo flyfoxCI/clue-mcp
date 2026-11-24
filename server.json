@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.flyfoxCI/clue-mcp",
+  "title": "机会雷达 Opportunity Loop",
+  "description": "Daily breakouts of small products (apps, mini-games, SaaS, extensions), why they grew, early birds with no look-alike yet, and growth playbooks for 1-2 person teams.",
+  "version": "0.1.0",
+  "repository": { "url": "https://github.com/flyfoxCI/clue-mcp", "source": "github" },
+  "websiteUrl": "https://opportunity-loop.pages.dev/v3/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://clue-mcp.zhanxiaohui2.workers.dev/mcp/{token}",
+      "variables": {
+        "token": {
+          "description": "Your personal token (ol_…). See https://opportunity-loop.pages.dev/v3/connect.html",
+          "isRequired": true,
+          "isSecret": true
+        }
+      }
+    }
+  ]
+}

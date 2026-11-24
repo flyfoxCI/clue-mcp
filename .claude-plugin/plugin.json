@@ -1,0 +1,20 @@
+{
+  "name": "clue",
+  "displayName": "机会雷达 Opportunity Loop",
+  "version": "0.1.0",
+  "description": "机会雷达:每天哪些小产品突然涨起来、为什么、一两个人怎么跟。Daily breakouts of small products (apps, mini-games, SaaS, extensions), early birds with no look-alike yet, directions, and growth playbooks, as MCP tools plus a skill.",
+  "author": { "name": "Opportunity Loop" },
+  "homepage": "https://opportunity-loop.pages.dev/v3/",
+  "repository": "https://github.com/flyfoxCI/clue-mcp",
+  "license": "MIT",
+  "keywords": ["indie", "product research", "mcp", "app store", "独立开发"],
+  "userConfig": {
+    "clue_token": {
+      "type": "string",
+      "title": "Opportunity Loop token (ol_…)",
+      "description": "你的个人 token / your personal token, starting with ol_. See https://opportunity-loop.pages.dev/v3/connect.html",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

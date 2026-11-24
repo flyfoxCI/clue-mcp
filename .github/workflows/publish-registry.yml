@@ -1,0 +1,27 @@
+name: publish to the MCP Registry
+
+# Publishes server.json to registry.modelcontextprotocol.io as io.github.flyfoxCI/clue-mcp.
+# GitHub OIDC proves we own the io.github.flyfoxCI namespace, so no secret is needed.
+# Run by hand after changing server.json (bump "version" first: the registry rejects a version twice).
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mcp-publisher v1.8.9
+        run: |
+          curl -sL https://github.com/modelcontextprotocol/registry/releases/download/v1.8.9/mcp-publisher_linux_amd64.tar.gz | tar xz mcp-publisher
+          ./mcp-publisher --help | head -3
+      - name: Log in with GitHub OIDC
+        run: ./mcp-publisher login github-oidc
+      - name: Publish server.json
+        run: ./mcp-publisher publish
+      - name: Check the listing
+        run: curl -s "https://registry.modelcontextprotocol.io/v0/servers?search=clue-mcp" | head -c 1500

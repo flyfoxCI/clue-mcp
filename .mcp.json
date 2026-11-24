@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "clue": {
+      "type": "http",
+      "url": "https://clue-mcp.zhanxiaohui2.workers.dev/mcp/${user_config.clue_token}"
+    }
+  }
+}

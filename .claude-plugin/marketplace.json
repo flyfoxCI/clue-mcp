@@ -1,0 +1,12 @@
+{
+  "name": "clue",
+  "description": "机会雷达 Opportunity Loop: Claude Code plugin (skill + remote MCP)",
+  "owner": { "name": "Opportunity Loop" },
+  "plugins": [
+    {
+      "name": "clue",
+      "source": "./",
+      "description": "机会雷达:每日越线的小产品、早鸟新苗子、方向与切口、增长打法。Daily breakouts, early birds, directions and growth playbooks for 1-2 person teams."
+    }
+  ]
+}
