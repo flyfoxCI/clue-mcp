@@ -1,7 +1,7 @@
 {
   "name": "clue",
   "displayName": "机会雷达 Opportunity Loop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "机会雷达:每天哪些小产品突然涨起来、为什么、一两个人怎么跟。Daily breakouts of small products (apps, mini-games, SaaS, extensions), early birds with no look-alike yet, directions, and growth playbooks, as MCP tools plus a skill.",
   "author": { "name": "Opportunity Loop" },
   "homepage": "https://opportunity-loop.pages.dev/v3/",

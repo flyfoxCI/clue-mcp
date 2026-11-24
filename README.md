@@ -18,11 +18,12 @@ the connection layer: the MCP address, a Claude Code plugin and a skill. The ser
 
 ## 1. 拿 token · Get a token
 
-每个人一个个人 token(`ol_…`),测试期每天 200 次调用。申请方式见
-<https://opportunity-loop.pages.dev/v3/connect.html>。token 就是你的钥匙，别发到公开的地方。
+打开 <https://clue-mcp.zhanxiaohui2.workers.dev/login>,用 GitHub 或 Google 登录，token 立刻显示(测试期免费，每天 200 次调用)。
+页面上还有一段可以直接贴给 AI 的话，它会自己完成配置。我们只读取账号 id 和显示名，不读邮箱。
 
-Each person gets a personal token (`ol_…`), 200 calls a day during the beta. How to get one:
-<https://opportunity-loop.pages.dev/v3/connect.html>. Treat it like a password.
+Sign in with GitHub or Google at <https://clue-mcp.zhanxiaohui2.workers.dev/login> and your token appears right away
+(free during the beta, 200 calls a day), with a prompt you can paste to your AI so it sets itself up. We read only
+your account id and display name. Treat the token like a password.
 
 ## 2. 接上 · Connect
 
@@ -66,18 +67,24 @@ https://clue-mcp.zhanxiaohui2.workers.dev/mcp/oai/<token>
 
 ## 工具 Tools
 
-全部只读 · All read-only.
-
 | 工具 Tool | 做什么 What it does |
 |---|---|
 | `feed` | 每日越线的产品和简报(最新一天 / 某天 / 搜索 / 读全文) · daily picks and briefs |
 | `early_apps` | 早鸟：近 90 天上架、已在赚钱、还没同款，带跟进判断 · early birds with a verdict |
-| `directions` | 方向与切口、进场节奏 · directions, angles, launch pace |
-| `search_apps` | 约 3.7 万个产品按词搜，可叠条件 · search ~37K products with filters |
-| `get_app` | 一个产品的数字、早鸟判断、简报、走势 · one product in depth |
+| `directions` | 方向/赛道：暴涨数、新进场数、赚钱的有几个、领头的；任意 App → 它的赛道和排名、按月进场节奏 · directions, from any app too |
+| `search_apps` | 按意思搜(多语言向量)+ 按词搜，名字拼错也能找到，可叠条件 · meaning + word search, typo-tolerant |
+| `list_apps` | 不用关键词：按条件筛选，按收入/增长/新增/上架/评分排序 · filter and sort without a search word |
+| `get_app` | 一个产品：数字、评论与抱怨原话、各国榜单、版本、广告素材、同开发者、相似产品、走势、简报 · one product in depth |
+| `compare_apps` | 2-4 个产品并排，含主要抱怨和原话 · side by side, with complaints |
 | `research_app` | 一个 App 的全部材料 + 待你自己查的清单 · everything on one app plus a to-do list |
 | `plays` | 增长与变现打法，带案例和反例 · growth playbooks with cases |
+| `query_sql` | 只读 SQL,计数和分布(50 行，只读库令牌 + 语句检查) · read-only SQL for counts and cuts |
+| `publish_board` | 把挑好的清单发布成可分享的网页 · publish a shortlist as a shareable page |
+| `request_research` | 申请对还没调研过的 App 做深度报告(第二天出) · queue a deep report |
 | `status` | 数据日期和每个来源的边界 · data date and source limits |
+
+除了 `publish_board` 和 `request_research` 会新建内容外，其余都只读。
+All tools are read-only except `publish_board` and `request_research`, which create content.
 
 回答是 Markdown:中文在前、英文在后，每个数字带来源，每个产品带网站页面链接。
 Answers are Markdown, Chinese first then English, with a source on every number and a link to the website page.
