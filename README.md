@@ -71,6 +71,7 @@ https://clue-mcp.zhanxiaohui2.workers.dev/mcp/oai/<token>
 |---|---|
 | `feed` | 每日越线的产品和简报(最新一天 / 某天 / 搜索 / 读全文) · daily picks and briefs |
 | `early_apps` | 早鸟：近 90 天上架、已在赚钱、还没同款，带跟进判断 · early birds with a verdict |
+| `waves` | 赛道：一个跑出来的点子，谁先做的、谁跟上了(晚几个月)、小团队怎么切入 · waves: lead, followers, how to get in |
 | `directions` | 方向/赛道：暴涨数、新进场数、赚钱的有几个、领头的；任意 App → 它的赛道和排名、按月进场节奏 · directions, from any app too |
 | `search_apps` | 按意思搜(多语言向量)+ 按词搜，名字拼错也能找到，可叠条件 · meaning + word search, typo-tolerant |
 | `list_apps` | 不用关键词：按条件筛选，按收入/增长/新增/上架/评分排序 · filter and sort without a search word |
@@ -80,7 +81,7 @@ https://clue-mcp.zhanxiaohui2.workers.dev/mcp/oai/<token>
 | `plays` | 增长与变现打法，带案例和反例 · growth playbooks with cases |
 | `query_sql` | 只读 SQL,计数和分布(50 行，只读库令牌 + 语句检查) · read-only SQL for counts and cuts |
 | `publish_board` | 把挑好的清单发布成可分享的网页 · publish a shortlist as a shareable page |
-| `request_research` | 申请对还没调研过的 App 做深度报告(第二天出) · queue a deep report |
+| `request_research` | 对还没调研过的 App 立即深度调研(约 2–4 分钟出报告页) · live deep report in 2-4 minutes |
 | `status` | 数据日期和每个来源的边界 · data date and source limits |
 
 除了 `publish_board` 和 `request_research` 会新建内容外，其余都只读。

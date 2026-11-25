@@ -1,7 +1,7 @@
 ---
 name: clue
 description: 机会雷达 Opportunity Loop：每天哪些小产品(App、小游戏、SaaS、插件)突然涨起来、为什么、一两个人怎么跟。用户问「现在做什么有机会」「这个点子有没有人赚到钱」「这个 App 怎么起来的、在不在买量」「最近什么在涨」「有没有刚冒头还没人跟的新产品」「我的产品怎么拿到用户」，或要一份每日/每周情报时使用。Use when the user asks what small product to build, whether an idea makes money, how an app grew or whether it buys ads, what is taking off now, or wants a daily or weekly digest.
-version: 0.2.0
+version: 0.3.0
 homepage: https://opportunity-loop.pages.dev/v3/
 ---
 
@@ -19,6 +19,7 @@ a brief on each, and rolls them up into directions, angles and playbooks. This s
 |---|---|
 | `feed` | 每日越线：最新一天的入选产品和简报；`day` 看某天，`q` 搜全部简报，`id` 读一篇全文。Daily picks and briefs. |
 | `early_apps` | 早鸟：近 90 天上架、已经在赚钱、库里还没同款的新 App,带「可直接跟进 / 有门槛 / 不建议抄」。Early birds with a verdict. |
+| `waves` | 赛道：一个跑出来的点子 —— 领头(最早靠它赚到钱的 App)、之后跟进的(晚几个月)、更早的老玩家、小团队怎么切入和风险。`key` 打开一条，`app` 找某个 App 所在的赛道。Waves: one idea that took off, the lead, its followers with the lag, how a small team gets in. |
 | `directions` | 方向/赛道：暴涨数、90 天新进场、赚钱的数量、领头的；`key` 打开一个(头部、新进场还在赚钱的、按月进场节奏、切口);`app` 从任意 App 进它的赛道。Directions. |
 | `search_apps` | 按意思搜(任何语言，一句话描述它做什么)+ 按词搜，名字拼错也行；可叠 store、min_rev、max_age_days、small_team、has_ads 等。Meaning + word search. |
 | `list_apps` | 不用关键词，按条件筛选再排序:sort=revenue / growth / new / newest / rating / size。Filter and sort. |
@@ -28,17 +29,17 @@ a brief on each, and rolls them up into directions, angles and playbooks. This s
 | `plays` | 打法：增长和变现做法，带步骤、案例、反例；`case_q` 搜真实案例。Playbooks and cases. |
 | `query_sql` | 只读 SQL(DuckDB,一条 SELECT,最多 50 行)。工具描述里有表结构。用于计数、分布、交叉对比。Read-only SQL. |
 | `publish_board` | 把挑好的 3-30 个产品发布成可分享网页，返回链接(数字取自我们的数据)。Publish a shortlist page. |
-| `request_research` | 对还没有深度报告的 App 申请调研，第二天的每日运行会写出来；每人每天 3 个。Queue a deep report. |
+| `request_research` | 对还没有深度报告的 App 立即联网深度调研，通常 2–4 分钟生成报告页(返回进度链接和报告链接);每人每天 3 个。Live deep report on an app we have not covered, usually 2-4 minutes; returns a progress link and the report link. |
 | `status` | 数据日期和每个来源的边界。先看它再引用数字。Data date and each source's limits. |
 
 ## 常用配合 Workflows
 
-1. **宽泛找方向 Find a direction.** 并行调 `feed()`、`early_apps()`、`directions()`;挑两三个值得深挖的，
+1. **宽泛找方向 Find a direction.** 并行调 `feed()`、`early_apps()`、`waves()`、`directions()`;挑两三个值得深挖的，
    用 `directions(key=...)` 和 `get_app(...)` 展开，再结合用户自己会什么、有多少时间给建议。
 2. **验一个点子 Check an idea.** `search_apps(q="<一句话说它做什么>")` 看谁在做、赚不赚钱、多久前上架;
    用 `compare_apps` 把领头的和最新进场的并排，`get_app(sections="reviews")` 看用户在抱怨什么——抱怨就是切口。
 3. **拆一个竞品 Take a competitor apart.** `research_app(app="<商店链接或名字>")`,然后按清单自己联网补齐。
-   没有深度报告的，可以 `request_research`。
+   没有深度报告的，可以 `request_research`(几分钟后打开它返回的报告链接)。
 4. **筛一批 Screen a batch.** `list_apps(store=..., max_age_days=180, min_rev=50000, small_team=true, sort="growth")`;
    要计数或分布用 `query_sql`。挑好了用 `publish_board` 发给用户一个链接。
 5. **找打法 Find a growth tactic.** `plays()` 看清单，`plays(id=...)` 读全文，`plays(case_q="<做法关键词>")` 搜案例。
